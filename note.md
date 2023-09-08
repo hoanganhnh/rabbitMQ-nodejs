@@ -26,3 +26,5 @@
   - !Important: TTL, durable, persistent
 
 ## Triển khai một mô hình Publish Subscribe sử dụng RabbitMQ
+
+- producer, exchange, consumer
