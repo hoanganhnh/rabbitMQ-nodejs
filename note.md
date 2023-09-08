@@ -19,9 +19,10 @@
 - pub/sub
 
 - Giải quyết vấn đề độ tin cậy trong queue (noAck, ttl, durable, persistent) phía Backend:
-  - Khi RabbitMQ reStart hay crash thì làm thế nào để không mất những message trong queue?
-  - Làm thế nào set một message hết hạn?
-  - Làm thế nào để xác định message đã được xử lý thành công?
-  - Một message sẽ được lấy ở cache hay disk trên RabbitMQ?
+  - Khi RabbitMQ reStart hay crash thì làm thế nào để không mất những message trong queue? --> durable
+  - Làm thế nào set một message hết hạn? --> TTL
+  - Làm thế nào để xác định message đã được xử lý thành công? --> noAck
+  - Một message sẽ được lấy ở cache hay disk trên RabbitMQ? --> persistent, disk
+  - !Important: TTL, durable, persistent
 
 ## Triển khai một mô hình Publish Subscribe sử dụng RabbitMQ
