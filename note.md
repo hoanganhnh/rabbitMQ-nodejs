@@ -28,3 +28,9 @@
 ## Triển khai một mô hình Publish Subscribe sử dụng RabbitMQ
 
 - producer, exchange, consumer
+
+## Mô hình topic exchange
+
+- client nào quan tâm đến topic nào thì sử dụng những cú pháp đăng ký thông qua hai ký tự đại diện "\*" và "#"
+- "\*" : phù hợp với bất kì kí tự nào, vd: producer: dev.test, new.test --> consumer: \*.test
+- "#" : khớp với một hoặc hiều kí tự bất kì, vd: producer: dev.test.lead, test.lead --> consumer: #.lead
