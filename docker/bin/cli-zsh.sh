@@ -10,4 +10,4 @@ else
   	DOCKER_COMPOSE="docker-compose"
 fi
 
-$DOCKER_COMPOSE -f $DIR/environment/docker-compose.yml exec node bash
+$DOCKER_COMPOSE -f $DIR/environment/docker-compose.yml exec node zsh

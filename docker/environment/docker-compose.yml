@@ -80,20 +80,22 @@ services:
     #     logging: *logging
     #     hostname: php-${COMPOSE_PROJECT_NAME}-docker
 
-    # node:
-    #     image: hoanganh2k1/node:16
-    #     environment:
-    #         UID: ${UID}
-    #         GID: ${GID}
-    #     networks:
-    #     - internal
-    #     volumes:
-    #     - ${WORK_DIR}:/app:cached
-    #     working_dir: /app
-    #     tty: true
-    #     init: true
-    #     hostname: ${COMPOSE_PROJECT_NAME}-docker
-    #     restart: unless-stopped
+    node:
+        image: hoanganh2k1/node:16
+        environment:
+            UID: ${UID}
+            GID: ${GID}
+        networks:
+        - internal
+        volumes:
+        - ${WORK_DIR}:/app:cached
+        working_dir: /app
+        tty: true
+        init: true
+        hostname: ${COMPOSE_PROJECT_NAME}-docker
+        restart: unless-stopped
+        depends_on:
+            - redis
 
     # db:
     #     image: ${DATABASE_ENGINE}:${DATABASE_ENGINE_VERSION}
@@ -185,16 +187,16 @@ services:
     #     depends_on:
     #         - cli
 
-    # redis:
-    #     image: redis:${REDIS_VERSION}
-    #     command: redis-server /usr/local/etc/redis/redis.conf
-    #     networks:
-    #         - internal
-    #     volumes:
-    #         - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
-    #         - redis_data:/data
-    #     restart: *restart
-    #     logging: *logging
+    redis:
+        image: redis:${REDIS_VERSION}
+        command: redis-server /usr/local/etc/redis/redis.conf
+        networks:
+            - internal
+        volumes:
+            - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+            - redis_data:/data
+        restart: *restart
+        logging: *logging
 
     # varnish:
     #     image: rogerdz/varnish:${VARNISH_VERSION}
